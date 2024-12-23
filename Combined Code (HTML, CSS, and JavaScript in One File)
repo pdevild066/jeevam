@@ -1,0 +1,143 @@
+
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jeevam - Medicine & Government Schemes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 350px;
+    }
+
+    h1 {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    h2 {
+      font-size: 1.2em;
+      color: #555;
+    }
+
+    label, input, button {
+      margin-bottom: 15px;
+      width: 100%;
+    }
+
+    input {
+      padding: 8px;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 10px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    h3 {
+      color: #444;
+    }
+
+    p {
+      font-size: 1em;
+      color: #555;
+      font-weight: bold;
+    }
+
+    #scheme-suggestion {
+      margin-top: 20px;
+      font-size: 1em;
+      color: #007bff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to Jeevam</h1>
+    <h2>Get Medicine Suggestions and Government Schemes for Your Disease</h2>
+
+    <label for="disease">Enter Disease:</label>
+    <input type="text" id="disease" placeholder="e.g., Headache, Fever, Cough">
+    <button onclick="suggestMedicine()">Suggest Medicine</button>
+
+    <h3>Suggested Medicine:</h3>
+    <p id="medicine-suggestion"></p>
+
+    <h3>Government Schemes:</h3>
+    <p id="scheme-suggestion"></p>
+  </div>
+
+  <script>
+    const medicineData = {
+      headache: "Paracetamol",
+      fever: "Ibuprofen",
+      cough: "Cough Syrup",
+      cold: "Antihistamines",
+      stomachAche: "Antacids",
+      allergy: "Antihistamines",
+      diabetes: "Metformin",
+      hypertension: "Lisinopril"
+    };
+
+    const governmentSchemes = {
+      headache: "No specific government scheme for headache.",
+      fever: "Health insurance schemes are available. Visit your local hospital for assistance.",
+      cough: "Medicines for respiratory diseases may be subsidized in some states. Check with local health programs.",
+      cold: "Check for government-provided health services for cold-related treatments.",
+      stomachAche: "Subsidized healthcare services are available for stomach problems. Visit a local health center.",
+      allergy: "Free treatment and schemes available in government hospitals for chronic allergies.",
+      diabetes: "The government offers free diabetes checkups and subsidized medicines in health centers.",
+      hypertension: "The government offers free checkups and subsidized medicines for hypertension patients."
+    };
+
+    function suggestMedicine() {
+      const disease = document.getElementById("disease").value.toLowerCase();
+      const medicineElement = document.getElementById("medicine-suggestion");
+      const schemeElement = document.getElementById("scheme-suggestion");
+
+      if (medicineData[disease]) {
+        medicineElement.textContent = `Suggested Medicine for ${disease}: ${medicineData[disease]}`;
+      } else {
+        medicineElement.textContent = "Sorry, no suggestions found for this disease.";
+      }
+
+      if (governmentSchemes[disease]) {
+        schemeElement.textContent = governmentSchemes[disease];
+      } else {
+        schemeElement.textContent = "No specific government schemes found for this disease.";
+      }
+    }
+  </script>
+</body>
+</html>
